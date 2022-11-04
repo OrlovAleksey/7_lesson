@@ -2,20 +2,19 @@ package demoqa;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class ParameterizedTestsLastFm {
+public class LastFmParameterizedTest {
     @BeforeAll
     static void setUp() {
         Configuration.holdBrowserOpen = true;
     }
     @ValueSource(strings = {"Tame Impala", "Oasis"})
-    @ParameterizedTest(name = "Проверка наличия исполнителя для поиска по тексту: {0}")
+    @org.junit.jupiter.params.ParameterizedTest(name = "Проверка наличия исполнителя для поиска по тексту: {0}")
     void lastfmSearchTest(String testData) {
         open("https://www.last.fm/");
         $(".masthead-search-toggle").click();
@@ -27,7 +26,7 @@ public class ParameterizedTestsLastFm {
             "Tame Impala, Currents",
             "Oasis, Definitely Maybe"
     })
-    @ParameterizedTest(name = "Проверка наличия альбома для исполнителя {0}")
+    @org.junit.jupiter.params.ParameterizedTest(name = "Проверка наличия альбома для исполнителя {0}")
     void lastfmSearchTestAlbum(String Artist, String Album) {
         open("https://www.last.fm/");
         $(".masthead-search-toggle").click();
