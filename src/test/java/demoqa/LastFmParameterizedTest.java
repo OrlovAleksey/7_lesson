@@ -4,7 +4,6 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Configuration;
 import demoqa.data.Locale;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -55,7 +54,7 @@ public class LastFmParameterizedTest {
         );
     }
     @MethodSource
-    @ParameterizedTest
+    @ParameterizedTest(name = "Проверка отображения названия кнопок для локали: {1}")
     void lastfmLocaleTest (List<String> buttonTexts, Locale locale){
         open("https://www.last.fm/");
         $(".footer-bottom").scrollIntoView(false);
